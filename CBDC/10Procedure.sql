@@ -1,0 +1,71 @@
+CREATE PROCEDURE CONTA()
+BEGIN
+SELECT 10 + 10 AS "CONTA";
+END
+$
+
++-------+
+| CONTA |
++-------+
+|    20 |
++-------+
+
+/*CHAMANDO A PROCEDURE*/
+
+CALL CONTA()$
+
+/*APAGANDO A PROCEDURE*/
+DROP PROCEDURE CONTA;
+
+
+/*PROCEDURE COM PARAMETROS*/
+
+DELIMITER $ /*MUDANDO O DELIMITADOR PARA $*/
+CREATE PROCEDURE CONTA(NUMERO1 INT, NUMERO2 INT)
+BEGIN
+ SELECT NUMERO1 * NUMERO2 AS "SOMA";
+ END
+ $
+ 
+ /*CHAMANDO A PROCEDURE COM PARAMETROS */
+  CALL CONTA (100,23)$
+  
+/*Procedures com Tabela*/
+/*PROCEDURES É UM BLOCO DE PROGRAMAÇÃO*/
+/*Procedures com Tabela*/
+CREATE TABLE cursos (
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR (30) NOT NULL,
+horas INT (3) NOT NULL,
+valor FLOAT (10,2) NOT NULL
+);
+
+INSERT INTO cursos VALUES (NULL, 'William Rolim', 300, 560.90);
+
+/*PRIMEIRA COISA PARA CRIAR PROCEDURE DELIMITADOR*/
+
+DELIMITER #
+
+CREATE PROCEDURE cad_curso2 (p_nome VARCHAR(30), p_horas INT(3),p_valor FLOAT(10,2))
+BEGIN
+INSERT INTO cursos VALUES (NULL,p_nome, p_horas,p_valor);
+END
+#
+
+/*SEMPRE ALTERAR O DELIMITADOR PARA ; APOS A CRIAÇÃO DO PROCEDURE*/
+DELIMITER #
+CREATE PROCEDURE SEL_CURSO()
+BEGIN
+SELECT ID ,NOME,HORAS,VALOR
+ FROM cursos;
+END
+#
+
+DELIMITER ;
+CALL SEL_CURSO();
++----+---------------+-------+--------+
+| ID | NOME          | HORAS | VALOR  |
++----+---------------+-------+--------+
+|  1 | William Rolim |   300 | 560.90 |
+|  2 | JAVA WEB      |   580 | 999.99 |
++----+---------------+-------+--------+

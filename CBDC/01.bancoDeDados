@@ -1,0 +1,122 @@
+/*CRiando tabela no banco de dados */
+
+CREATE TABLE cliente (
+nome VARCHAR(30),
+sexo CHAR(1),
+email VARCHAR(30),
+cpf INT(11),
+telefone VARCHAR(30),
+endereco VARCHAR(100)
+);
+
+/*verificando as tabelas*/
+SHOW TABLES;
+
+/*Descrevendo Tabelas Desc = describe */
+DESC CLIENTE;
+
+/* 01 Inserindo dados na tabela (excluindo a coluna) */
+INSERT INTO cliente VALUES ('William Rolim de Santana', 'M', 'williamrolim2011@hotmail.com',123456789,'2692-3233','Dr. Abobrinha n222');
+
+INSERT INTO cliente VALUES ('Rodrigo Rolim de Santana', 'M', 'rodrigorolim2011@hotmail.com',987654321,'3691-3233','Dr. Pimpolho  49');
+
+INSERT INTO cliente VALUES ('Ruth Neves', 'F', 'ruth@gmail.com',45362745,'9691-4533','Paulinha  49');
+
+/*02 - Inserindo dados  - Colocando nas colunas FORMA MAIS UTILIZADA */
+INSERT INTO cliente (nome,sexo,email,cpf,telefone,endereco) VALUES ('Joana Dark', 'F', 'joanadark@hotmail.com', 32333221, '9876-9862','Maricota 333');
+
+/*03 - Inserindo compacto - SOMENTE MYSQL*/
+INSERT INTO cliente VALUES ('Joazinho Trinta', 'M', 'joaozinhotrinta@hotmail.com', 986345, '3874-9566','Rapadura 1333'),
+			   ('Ruan Brujo', 'M', 'brujo@gmail.com', 666999, '3567-0945','Geronimo 345');
+
+/* SELECIONAR O HORARIO ATUAL */			   
+SELECT NOW();
+
+SELECT 'william rolim';
+
+/*ALIAS DE COLUNA - CRIAR COLUNAS QUE NÃO EXISTE NA TABELA */
+
+SELECT 'william rolim' AS ANALISTA;
+
+/*SELECIONAR DADOS ESPECIFICOS NA TABELA*/
+SELECT nome,sexo,endereco FROM cliente;
+
+SELECT nome,sexo,email endereco FROM cliente;
+
+SELECT endereco, email, nome FROM cliente;
+
+/*FILTRAR DADOS COM WHERE (ONDE)*/
+SELECT nome, endereco FROM cliente WHERE sexo = 'F';
+
+SELECT nome, endereco, email FROM cliente WHERE sexo = 'M';
+
+SELECT * FROM cliente;
+
+/*carater coringa no LIKE*/
+SELECT nome, email, endereco FROM cliente WHERE endereco LIKE 'Dr.%';
+
+SELECT nome, email, endereco FROM cliente WHERE endereco LIKE '%49';
+
+SELECT nome, email, endereco FROM cliente WHERE email LIKE '%gmail%';
+
+/*FILTRAR DADOS COM WHERE (ONDE)*/
+SELECT nome, endereco FROM cliente WHERE sexo = 'F';
+
+SELECT nome, endereco, email FROM cliente WHERE sexo = 'M';
+
+SELECT * FROM cliente;
+
+/*carater coringa no LIKE*/
+SELECT nome, email, endereco FROM cliente WHERE endereco LIKE 'Dr.%';
+
+SELECT nome, email, endereco FROM cliente WHERE endereco LIKE '%49';
+
+SELECT nome, email, endereco FROM cliente WHERE email LIKE '%gmail%';
+
+/*Operadores logicos*/
+SELECT nome, email FROM cliente WHERE nome = 'William Rolim de Santana' OR email LIKE '%gmail%';
+
+SELECT nome, endereco FROM cliente WHERE nome = 'Joana Dark' AND endereco = 'Maricota 333';
+
+SELECT nome, email FROM cliente WHERE nome = 'Joana Dark' AND email LIKE '%hotmail%' AND cpf = 32333221;
+
+/*Contando registros da tabela*/
+
+SELECT COUNT(*) FROM cliente;
+
+SELECT COUNT(*) AS 'quantidade_clientes' FROM cliente;
+
+/*Operador Group By*/
+
+SELECT * FROM CLIENTE;
+
+/* quantos homens e quantas mulheres*/
+SELECT sexo, COUNT(*) AS 'quantidade do sexo masculino' FROM cliente GROUP BY sexo;
+
+
+/*filtrar valores nulos*/
+SELECT nome, cpf, email FROM cliente WHERE email IS NULL;
+
+SELECT nome, cpf, email FROM cliente WHERE email IS NOT NULL;
+
+/* A14 - Utilziando o UPDATE PARA ATUALIZAR VALORES */
+
+/*Utilizar o update sempre com a clausula where*/
+UPDATE cliente SET email='ruanbrujo@yahoo.com' WHERE email='brujo@gmail.com';
+
+UPDATE cliente SET nome='William Rolim' WHERE nome = 'William Rolim de Santana';
+
+UPDATE cliente SET email = 'nenhum email' WHERE email IS NULL;
+
+UPDATE cliente SET endereco = 'Rapadura 1333' WHERE endereco = 'Rapadura Acucarada 1232';
+
+/*DELETANDO REGISTROS COM A CLAUSULA WHERE*/
+/*NUNCA DETETE SEM WHERE */
+DELETE FROM cliente WHERE nome = 'William Rolim';
+
+
+/*Group By*/
+Agrupa os registros por condição
+
+/*count(*) conta grupos por registros*
+

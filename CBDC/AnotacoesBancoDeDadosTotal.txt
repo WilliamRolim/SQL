@@ -1,0 +1,47 @@
+ctrl + o = organizar os atributos
+
+mysql 
+PONTO E VIRGULA chama-se delimitador;
+
+DESC CLIENTE;
+
+tupla é sinonimo de registro
+
+CARACTER CORINGA TUDO ANTES E TUDO APOS
+&_QUALQUER COISA MAIS UM CARACTER
+&LIKE COM CORINGA DEGRADA A PERFOMACE
+
+float (10,2) 10 casas aonde 2 são decimais
+
+select * from cliente;
+
+
+
+As chaves primarias podem ser de duas formas natural - CPF - O CPF PERTENCE A UMA UNICA PESSOA É UMA VERDADE
+  artificial - ALGO CRIADO - EXEMPLO ID;
+
+INNER JOIN JUNTADO
+ON   /*QUAL A CONDIÇÃO DAS 2 CHAVES - CHAVE PRIMARIA DE UM É IGUAL A CHAVE ESTRANGEIRA DE OUTRA
+
+Clausula ambigua
+
+Dando apilidos para tabela
+
+1 x 1 a chave estrangeira fica na tabela mais fraca
+
+1 x n a chave estrangeira fica na cardinalidade N
+
+
+
+____________________- 
+
+não backup da senha, restaurar o usuario, politica de segurança, o usuario tem que restaurar a senha dele
+
+selectionando todos os bandos de dados
+show databases;
+Selecionando todos os bancos de dados e tabelas;
+select * from information_schema.TABLES;
+
+
+
+
