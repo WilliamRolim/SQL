@@ -1,4 +1,5 @@
-/*a) Mostrar o nome, a data de admissão, cargo e o cod. do depto de todos os empregados que tenham o mesmo depto que o funcionário de nome Steven King. Tabela employees. */
+/*a) Mostrar o nome, a data de admissão, cargo e o cod. do depto de todos os empregados que tenham o mesmo depto que o funcionário de nome Steven King. 
+Tabela employees. */
 
 SELECT first_name, hire_date,job_id,department_id 
 FROM employees 
